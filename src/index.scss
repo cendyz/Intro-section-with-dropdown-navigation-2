@@ -1,0 +1,8 @@
+@use './sass/reset';
+@use './sass/fonts.scss' as *;
+
+body {
+	position: relative;
+	font-family: 'Epilogue', serif;
+}
+

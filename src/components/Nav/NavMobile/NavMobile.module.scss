@@ -1,0 +1,25 @@
+@use '../../../sass/mixins.scss' as *;
+
+.nav {
+	padding: 1.2em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	height: 4.219em;
+}
+
+.btn {
+	z-index: 10;
+}
+
+.navMenu {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 63%;
+	height: 100vh;
+	background-color: white;
+	transition: transform 0.2s;
+	z-index: 9;
+}
