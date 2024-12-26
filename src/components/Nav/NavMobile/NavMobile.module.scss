@@ -35,19 +35,15 @@
 
 .btnLink {
 	column-gap: 0.7em;
-	font-size: 1.6rem;
-	font-weight: $weight-500;
-	color: $a-gray;
 }
 
 .insideLinkBox {
 	padding: 1.3em;
 	flex-direction: column;
-	align-items: flex-start;;
+	align-items: flex-start;
 	flex-wrap: wrap;
 	max-width: 10.75em;
-	row-gap: .6em;
-	height: auto;
+	row-gap: 0.6em;
 }
 
 .linkBox {
@@ -56,11 +52,36 @@
 
 .btnLinkIcon {
 	width: 19%;
+	transition: transform 0.2s;
+}
+
+.link,
+.loginBtn,
+.registerBtn,
+.btnLink {
+	color: $a-gray;
+	font-weight: $weight-500;
+	font-size: 1.6rem;
 }
 
 .link {
 	width: 100%;
-	color: $a-gray;
 	column-gap: 1em;
-	font-weight: $weight-500;
+}
+
+.loginBtn,
+.registerBtn {
+	display: block;
+}
+
+.loginBtn {
+	margin: 0 auto;
+	padding: 1em 0 1.5em;
+}
+
+.registerBtn {
+	padding: 0.7em 0;
+	width: 100%;
+	border: 2px solid $a-gray;
+	border-radius: 0.9em;
 }

@@ -15,6 +15,13 @@ const NavMobile = () => {
 		setActiveBox(prevItem => (prevItem === id ? null : id))
 	}
 
+	const handleActive = () => {
+		setActive(!active)
+		setTimeout(() => {
+			setActiveBox(null)
+		}, 200)
+	}
+
 	return (
 		<nav className={styles.nav}>
 			<img src={logo} alt='Logo' className={styles.navLogo} />
@@ -23,7 +30,7 @@ const NavMobile = () => {
 					src={active ? closeMenuIcon : openMenuIcon}
 					alt='Menu open/close icon'
 					className={styles.btnBurger}
-					onClick={() => setActive(!active)}
+					onClick={handleActive}
 				/>
 			</button>
 			<div
@@ -39,13 +46,19 @@ const NavMobile = () => {
 								style={{
 									paddingBottom: `${activeBox === id ? '0' : '1.5'}em`,
 								}}
-								onClick={() => handleLinkBox(id)}>
+								onClick={() => handleLinkBox(id)}
+								disabled={id > 2}>
 								{btnText}{' '}
 								{icon && (
 									<img
 										src={icon}
 										alt='Button link arrow icon'
 										className={styles.btnLinkIcon}
+										style={{
+											transform: `${
+												activeBox === id ? 'rotate(180deg)' : 'rotate(0)'
+											}`,
+										}}
 									/>
 								)}
 							</button>
@@ -57,7 +70,7 @@ const NavMobile = () => {
 									}}>
 									{insideLinksData.map(
 										({ linkOne, linkTwo, icon, id }) => {
-											if (id > 3) return null
+											if (activeBox === 2 && id > 3) return null
 											return (
 												<div className={styles.linkBox} key={id}>
 													{!(activeBox === 2) && (
@@ -80,6 +93,8 @@ const NavMobile = () => {
 						</div>
 					)
 				})}
+				<button className={styles.loginBtn}>Login</button>
+				<button className={styles.registerBtn}>Register</button>
 			</div>
 		</nav>
 	)
