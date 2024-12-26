@@ -1,9 +1,16 @@
 @use '../../../sass/mixins.scss' as *;
+@use '../../../sass/colors.scss' as *;
+@use '../../../sass/fonts.scss' as *;
+
+.nav,
+.btnLink,
+.insideLinkBox, .link {
+	display: flex;
+	align-items: center;
+}
 
 .nav {
 	padding: 1.2em;
-	display: flex;
-	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	height: 4.219em;
@@ -14,12 +21,34 @@
 }
 
 .navMenu {
+	padding: 5.7em 1.7em 0;
 	position: fixed;
 	right: 0;
 	top: 0;
 	width: 63%;
 	height: 100vh;
-	background-color: white;
+	background-color: $a-white;
 	transition: transform 0.2s;
 	z-index: 9;
+}
+
+.btnLink {
+	column-gap: 0.7em;
+	padding-bottom: 1em;
+	font-size: 1.6rem;
+	font-weight: $weight-500;
+	color: $a-gray;
+}
+
+.insideLinkBox {
+	padding: 1.3em;
+	flex-direction: column;
+	align-items: start;
+	row-gap: 1.3em;
+}
+
+.link {
+    color: $a-gray;
+    column-gap: 1em;
+    font-weight: $weight-500;
 }

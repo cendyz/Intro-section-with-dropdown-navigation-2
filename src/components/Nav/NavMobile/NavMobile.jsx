@@ -1,12 +1,19 @@
 import { useState } from 'react'
+import { useGlobalContext } from '../../../Context'
+import { menuBtnsData } from '../../../data'
 import styles from './NavMobile.module.scss'
 import logo from '../../../images/logo.svg'
 import openMenuIcon from '../../../images/icon-menu.svg'
 import closeMenuIcon from '../../../images/icon-close-menu.svg'
-import { useGlobalContext } from '../../../Context'
 
 const NavMobile = () => {
 	const { active, setActive } = useGlobalContext()
+	const [activeBox, setActiveBox] = useState(null)
+
+	const handleLinkBox = id => {
+		setActiveBox(prevItem => (prevItem === id ? null : id))
+	}
+
 	return (
 		<nav className={styles.nav}>
 			<img src={logo} alt='Logo' className={styles.navLogo} />
@@ -22,8 +29,95 @@ const NavMobile = () => {
 				className={styles.navMenu}
 				style={{
 					transform: `translateX(${active ? '0' : '100'}%)`,
-				}}></div>
+				}}>
+				{menuBtnsData.map(({ id, btnText, icon }) => {
+					return (
+						<div className={styles.LinkBox} key={id}>
+							<button
+								className={styles.btnLink}
+								style={{
+									paddingBottom: `${activeBox === id ? '0' : '1'}em`,
+								}}
+								onClick={() => handleLinkBox(id)}>
+								{btnText}{' '}
+								{icon && (
+									<img
+										src={icon}
+										alt='Button link arrow icon'
+										className={styles.btnLinkIcon}
+									/>
+								)}
+							</button>
+							{activeBox === id && icon && (
+								<div className={styles.insideLinkBox}>
+									<a href='#' className={styles.link}>
+										<img
+											src='src/images/icon-calendar.svg'
+											alt='Calendar'
+											className={styles.btnLinkIcon}
+										/>{' '}
+										Todo List
+									</a>
+									<a href='#' className={styles.link}>
+										<img
+											src='src/images/icon-calendar.svg'
+											alt='Calendar'
+											className={styles.btnLinkIcon}
+										/>{' '}
+										Todo List
+									</a>
+									<a href='#' className={styles.link}>
+										<img
+											src='src/images/icon-calendar.svg'
+											alt='Calendar'
+											className={styles.btnLinkIcon}
+										/>{' '}
+										Todo List
+									</a>
+								</div>
+							)}
+						</div>
+					)
+				})}
+			</div>
 		</nav>
 	)
 }
 export default NavMobile
+
+// <div className={styles.LinkBox}>
+// 				<button className={styles.btnLink}>
+// 					Features{' '}
+// 					<img
+// 						src={arrowDown}
+// 						alt='Button link arrow icon'
+// 						className={styles.btnLinkIcon}
+// 					/>
+// 				</button>
+// 				<div className={styles.insideLinkBox}>
+// 					<a href='#' className={styles.link}>
+// 						<img
+// 							src='src/images/icon-calendar.svg'
+// 							alt='Calendar'
+// 							className={styles.btnLinkIcon}
+// 						/>{' '}
+// 						Todo List
+// 					</a>
+// 					<a href='#' className={styles.link}>
+// 						<img
+// 							src='src/images/icon-calendar.svg'
+// 							alt='Calendar'
+// 							className={styles.btnLinkIcon}
+// 						/>{' '}
+// 						Todo List
+// 					</a>
+// 					<a href='#' className={styles.link}>
+// 						<img
+// 							src='src/images/icon-calendar.svg'
+// 							alt='Calendar'
+// 							className={styles.btnLinkIcon}
+// 						/>{' '}
+// 						Todo List
+// 					</a>
+// 				</div>
+// 			</div>

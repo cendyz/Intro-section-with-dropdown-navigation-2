@@ -4,6 +4,7 @@ const GlobalContext = createContext()
 
 const AppContext = ({ children }) => {
 	const [active, setActive] = useState(false)
+	
 	return (
 		<GlobalContext.Provider value={{ active, setActive }}>
 			{children}
