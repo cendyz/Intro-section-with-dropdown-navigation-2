@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGlobalContext } from '../../../Context'
-import { menuBtnsData } from '../../../data'
+import { menuBtnsData, insideLinksData } from '../../../data'
+import React from 'react'
 import styles from './NavMobile.module.scss'
 import logo from '../../../images/logo.svg'
 import openMenuIcon from '../../../images/icon-menu.svg'
@@ -36,7 +37,7 @@ const NavMobile = () => {
 							<button
 								className={styles.btnLink}
 								style={{
-									paddingBottom: `${activeBox === id ? '0' : '1'}em`,
+									paddingBottom: `${activeBox === id ? '0' : '1.5'}em`,
 								}}
 								onClick={() => handleLinkBox(id)}>
 								{btnText}{' '}
@@ -48,32 +49,32 @@ const NavMobile = () => {
 									/>
 								)}
 							</button>
-							{activeBox === id && icon && (
-								<div className={styles.insideLinkBox}>
-									<a href='#' className={styles.link}>
-										<img
-											src='src/images/icon-calendar.svg'
-											alt='Calendar'
-											className={styles.btnLinkIcon}
-										/>{' '}
-										Todo List
-									</a>
-									<a href='#' className={styles.link}>
-										<img
-											src='src/images/icon-calendar.svg'
-											alt='Calendar'
-											className={styles.btnLinkIcon}
-										/>{' '}
-										Todo List
-									</a>
-									<a href='#' className={styles.link}>
-										<img
-											src='src/images/icon-calendar.svg'
-											alt='Calendar'
-											className={styles.btnLinkIcon}
-										/>{' '}
-										Todo List
-									</a>
+							{icon && (
+								<div
+									className={styles.insideLinkBox}
+									style={{
+										display: activeBox === id ? 'flex' : 'none',
+									}}>
+									{insideLinksData.map(
+										({ linkOne, linkTwo, icon, id }) => {
+											if (id > 3) return null
+											return (
+												<div className={styles.linkBox} key={id}>
+													{!(activeBox === 2) && (
+														<img
+															src={icon}
+															alt={linkOne}
+															className={styles.btnLinkIcon}
+														/>
+													)}
+
+													<a href='#' className={styles.link}>
+														{activeBox === 2 ? linkTwo : linkOne}
+													</a>
+												</div>
+											)
+										}
+									)}
 								</div>
 							)}
 						</div>

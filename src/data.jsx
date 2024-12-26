@@ -1,7 +1,7 @@
 import iconTodo from './images/icon-todo.svg'
 import iconCalendar from './images/icon-calendar.svg'
 import iconReminders from './images/icon-reminders.svg'
-import icon from './images/icon-planning.svg'
+import iconPlanning from './images/icon-planning.svg'
 import arrowIcon from './images/icon-arrow-down.svg'
 
 export const menuBtnsData = [
@@ -28,20 +28,26 @@ export const menuBtnsData = [
 export const insideLinksData = [
 	{
 		id: 1,
-        link: 'Todo List'
-		// links: [`Todo List`, 'Calendar', 'Reminders', 'Planning'],
+        linkOne: 'Todo List',
+		icon: iconTodo,
+        linkTwo: 'History'
 	},
 	{
 		id: 2,
-		link: 'Calendar'
+		linkOne: 'Calendar',
+        icon: iconCalendar,
+        linkTwo: 'Our Team'
 	},
 	{
-		id: 2,
-		link: 'Calendar'
+		id: 3,
+		linkOne: 'Reminders',
+        icon: iconReminders,
+        linkTwo: 'Blog'
 	},
 	{
-		id: 2,
-		link: 'Calendar'
+		id: 4,
+		linkOne: 'Planning',
+        icon: iconPlanning,
 	},
 
 ]

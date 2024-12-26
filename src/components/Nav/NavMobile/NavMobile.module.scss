@@ -4,7 +4,8 @@
 
 .nav,
 .btnLink,
-.insideLinkBox, .link {
+.insideLinkBox,
+.linkBox {
 	display: flex;
 	align-items: center;
 }
@@ -34,7 +35,6 @@
 
 .btnLink {
 	column-gap: 0.7em;
-	padding-bottom: 1em;
 	font-size: 1.6rem;
 	font-weight: $weight-500;
 	color: $a-gray;
@@ -43,12 +43,24 @@
 .insideLinkBox {
 	padding: 1.3em;
 	flex-direction: column;
-	align-items: start;
-	row-gap: 1.3em;
+	align-items: flex-start;;
+	flex-wrap: wrap;
+	max-width: 10.75em;
+	row-gap: .6em;
+	height: auto;
+}
+
+.linkBox {
+	column-gap: 1em;
+}
+
+.btnLinkIcon {
+	width: 19%;
 }
 
 .link {
-    color: $a-gray;
-    column-gap: 1em;
-    font-weight: $weight-500;
+	width: 100%;
+	color: $a-gray;
+	column-gap: 1em;
+	font-weight: $weight-500;
 }
