@@ -1,0 +1,38 @@
+@use './colors.scss' as *;
+@use './fonts.scss' as *;
+
+.btnLink {
+    display: flex;
+	align-items: center;
+	color: $a-gray;
+	font-weight: $weight-500;
+	font-size: 1.6rem;
+	column-gap: 0.7em;
+}
+
+.btnLinkIcon {
+	width: 19%;
+	transition: transform 0.2s;
+}
+
+.linkBox {
+	display: flex;
+	align-items: center;
+	column-gap: 1em;
+}
+
+.insideLinkBox {
+	display: flex;
+	padding: 1.3em;
+	flex-direction: column;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	max-width: 10.75em;
+	row-gap: 0.6em;
+}
+
+.link {
+	color: $a-gray;
+	font-weight: $weight-500;
+	font-size: 1.6rem;
+}

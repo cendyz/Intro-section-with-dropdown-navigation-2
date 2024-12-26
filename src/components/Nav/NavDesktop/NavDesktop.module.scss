@@ -1,0 +1,52 @@
+@use '../../../sass/mixins.scss' as *;
+@use '../../../sass/shared.scss' as *;
+@use '../../../sass/colors.scss' as *;
+
+.nav {
+	display: none;
+}
+
+@media (min-width: 992px) {
+	.nav {
+		@include wrapper;
+		display: flex;
+		padding: 2em 3em;
+	}
+
+	.logo {
+		margin-right: 4em;
+	}
+
+	.btnLink {
+		display: grid;
+		grid-template-columns: auto auto;
+		padding-right: 3em;
+	}
+
+	.leftPart {
+		display: flex;
+	}
+
+	.btnBox {
+		position: relative;
+	}
+
+	.linksContainer {
+		top: 130%;
+		left: 0;
+		position: absolute;
+		background-color: $a-white;
+		border-radius: 1em;
+		-webkit-box-shadow: 0px 23px 100px -28px rgba(0, 0, 0, 1);
+		-moz-box-shadow: 0px 23px 100px -28px rgba(0, 0, 0, 1);
+		box-shadow: 0px 23px 100px -28px rgba(0, 0, 0, 1);
+	}
+
+	.btnLinkIcon {
+		width: 100%;
+	}
+
+	.insideIcon {
+		scale: 2;
+	}
+}

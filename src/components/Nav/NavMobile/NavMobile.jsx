@@ -8,24 +8,14 @@ import openMenuIcon from '../../../images/icon-menu.svg'
 import closeMenuIcon from '../../../images/icon-close-menu.svg'
 
 const NavMobile = () => {
-	const { active, setActive } = useGlobalContext()
-	const [activeBox, setActiveBox] = useState(null)
-	const menuRef = useRef(null)
-
-	const handleLinkBox = id => {
-		setActiveBox(prevItem => (prevItem === id ? null : id))
-	}
-
-	const handleActive = () => {
-		setActive(!active)
-		setActiveBox(null)
-	}
-
-	const handleClickOutside = e => {
-		if (!menuRef.current.contains(e.target)) {
-			setActive(false)
-		}
-	}
+	const {
+		active,
+		activeBox,
+		menuRef,
+		handleLinkBox,
+		handleActive,
+		handleClickOutside,
+	} = useGlobalContext()
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleClickOutside)

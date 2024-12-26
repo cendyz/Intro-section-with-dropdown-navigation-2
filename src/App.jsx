@@ -10,7 +10,7 @@ const App = () => {
 	)
 }
 export default App
-
+// 380 260
 // Features
 //   Company
 //   Careers
