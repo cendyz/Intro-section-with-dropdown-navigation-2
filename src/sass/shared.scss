@@ -1,11 +1,24 @@
 @use './colors.scss' as *;
 @use './fonts.scss' as *;
 
-.btnLink {
-    display: flex;
+.btnLink,
+.insideLinkBox,
+.linkBox {
+	display: flex;
+}
+
+.btnLink,
+.linkBox {
 	align-items: center;
+}
+
+.btnLink,
+.link {
 	color: $a-gray;
 	font-weight: $weight-500;
+}
+
+.btnLink {
 	font-size: 1.6rem;
 	column-gap: 0.7em;
 }
@@ -16,13 +29,10 @@
 }
 
 .linkBox {
-	display: flex;
-	align-items: center;
 	column-gap: 1em;
 }
 
 .insideLinkBox {
-	display: flex;
 	padding: 1.3em;
 	flex-direction: column;
 	align-items: flex-start;
@@ -32,7 +42,5 @@
 }
 
 .link {
-	color: $a-gray;
-	font-weight: $weight-500;
 	font-size: 1.6rem;
 }

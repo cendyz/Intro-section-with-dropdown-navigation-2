@@ -2,10 +2,10 @@ import styles from './NavDesktop.module.scss'
 import logo from '../../../images/logo.svg'
 import { useGlobalContext } from '../../../Context'
 import classNames from 'classnames'
-import { menuBtnsData } from '../../../data'
+import { menuBtnsData, insideLinksData } from '../../../data'
 
 const NavDesktop = () => {
-	const { active } = useGlobalContext()
+	const { active, handleLinkBox, activeBox } = useGlobalContext()
 	return (
 		<nav className={styles.nav}>
 			<div className={styles.leftPart}>
@@ -13,59 +13,48 @@ const NavDesktop = () => {
 				{menuBtnsData.map(({ btnText, icon, id }) => {
 					return (
 						<div className={styles.btnBox} key={id}>
-							<button className={styles.btnLink}>
+							<button
+								className={styles.btnLink}
+								onClick={() => handleLinkBox(id)}
+								disabled={id > 2}>
 								{btnText}
-								{icon && <img
-									src={icon}
-									alt='Arrow icon'
-									className={styles.btnLinkIcon}
-								/>}
+								{icon && (
+									<img
+										src={icon}
+										alt='Arrow icon'
+										className={styles.btnLinkIcon}
+									/>
+								)}
 							</button>
-							{active && (
+							{activeBox === id && (
 								<div
 									className={classNames(
 										styles.linksContainer,
 										styles.insideLinkBox
-									)}>
-									<div className={styles.linkBox}>
-										<img
-											src='src/images/icon-reminders.svg'
-											alt='Arrow icon'
-											className={classNames(
-												styles.btnLinkIcon,
-												styles.insideIcon
-											)}
-										/>
-										<a href='#' className={styles.link}>
-											Reminder
-										</a>
-									</div>
-									<div className={styles.linkBox}>
-										<img
-											src='src/images/icon-reminders.svg'
-											alt='Arrow icon'
-											className={classNames(
-												styles.btnLinkIcon,
-												styles.insideIcon
-											)}
-										/>
-										<a href='#' className={styles.link}>
-											Reminder
-										</a>
-									</div>
-									<div className={styles.linkBox}>
-										<img
-											src='src/images/icon-reminders.svg'
-											alt='Arrow icon'
-											className={classNames(
-												styles.btnLinkIcon,
-												styles.insideIcon
-											)}
-										/>
-										<a href='#' className={styles.link}>
-											Reminder
-										</a>
-									</div>
+									)}
+									style={{ opacity: activeBox === id ? 1 : 0 }}>
+									{insideLinksData.map(
+										({ linkOne, linkTwo, icon, id }) => {
+											if (activeBox === 2 && id > 3) return null
+											return (
+												<div className={styles.linkBox} key={id}>
+													{activeBox === 1 && (
+														<img
+															src={icon}
+															alt='Arrow icon'
+															className={classNames(
+																styles.btnLinkIcon,
+																styles.insideIcon
+															)}
+														/>
+													)}
+													<a href='#' className={styles.link}>
+														{activeBox === 2 ? linkTwo : linkOne}
+													</a>
+												</div>
+											)
+										}
+									)}
 								</div>
 							)}
 						</div>
