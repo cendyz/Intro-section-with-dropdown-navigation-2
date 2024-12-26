@@ -1,0 +1,50 @@
+@use '../../sass/colors.scss' as *;
+@use '../../sass/fonts.scss' as *;
+
+.headerImg {
+	display: block;
+	width: 100%;
+}
+
+.secondBox {
+	text-align: center;
+	padding: 3em 1em;
+}
+
+.title {
+	margin-bottom: 0.7em;
+	font-size: 3.5rem;
+}
+
+.desc {
+	line-height: 1.6;
+	color: $a-gray;
+	font-weight: $weight-500;
+}
+
+.btn {
+	margin: 2em 0 2.7em;
+	padding: 1em 1.3em;
+	font-size: 1.6rem;
+	font-weight: $weight-700;
+	color: $a-white;
+	background-color: $a-black;
+	border-radius: 0.9em;
+}
+
+.logosContainer {
+	display: flex;
+	align-items: center;
+	column-gap: 1.8em;
+}
+
+.logo {
+	width: 100%;
+
+	&:nth-child(1) {
+		width: 130%;
+	}
+	&:nth-child(2) {
+		width: 80%;
+	}
+}

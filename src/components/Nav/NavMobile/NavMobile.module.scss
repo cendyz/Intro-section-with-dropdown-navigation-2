@@ -85,3 +85,9 @@
 	border: 2px solid $a-gray;
 	border-radius: 0.9em;
 }
+
+@media (min-width: 992px) {
+	.nav {
+		display: none;
+	}
+}

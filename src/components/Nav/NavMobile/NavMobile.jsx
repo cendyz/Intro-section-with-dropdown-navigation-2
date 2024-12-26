@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useGlobalContext } from '../../../Context'
 import { menuBtnsData, insideLinksData } from '../../../data'
 import React from 'react'
@@ -10,6 +10,7 @@ import closeMenuIcon from '../../../images/icon-close-menu.svg'
 const NavMobile = () => {
 	const { active, setActive } = useGlobalContext()
 	const [activeBox, setActiveBox] = useState(null)
+	const menuRef = useRef(null)
 
 	const handleLinkBox = id => {
 		setActiveBox(prevItem => (prevItem === id ? null : id))
@@ -17,13 +18,24 @@ const NavMobile = () => {
 
 	const handleActive = () => {
 		setActive(!active)
-		setTimeout(() => {
-			setActiveBox(null)
-		}, 200)
+		setActiveBox(null)
 	}
 
+	const handleClickOutside = e => {
+		if (!menuRef.current.contains(e.target)) {
+			setActive(false)
+		}
+	}
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside)
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [])
+
 	return (
-		<nav className={styles.nav}>
+		<nav className={styles.nav} ref={menuRef}>
 			<img src={logo} alt='Logo' className={styles.navLogo} />
 			<button className={styles.btn}>
 				<img
@@ -100,40 +112,3 @@ const NavMobile = () => {
 	)
 }
 export default NavMobile
-
-// <div className={styles.LinkBox}>
-// 				<button className={styles.btnLink}>
-// 					Features{' '}
-// 					<img
-// 						src={arrowDown}
-// 						alt='Button link arrow icon'
-// 						className={styles.btnLinkIcon}
-// 					/>
-// 				</button>
-// 				<div className={styles.insideLinkBox}>
-// 					<a href='#' className={styles.link}>
-// 						<img
-// 							src='src/images/icon-calendar.svg'
-// 							alt='Calendar'
-// 							className={styles.btnLinkIcon}
-// 						/>{' '}
-// 						Todo List
-// 					</a>
-// 					<a href='#' className={styles.link}>
-// 						<img
-// 							src='src/images/icon-calendar.svg'
-// 							alt='Calendar'
-// 							className={styles.btnLinkIcon}
-// 						/>{' '}
-// 						Todo List
-// 					</a>
-// 					<a href='#' className={styles.link}>
-// 						<img
-// 							src='src/images/icon-calendar.svg'
-// 							alt='Calendar'
-// 							className={styles.btnLinkIcon}
-// 						/>{' '}
-// 						Todo List
-// 					</a>
-// 				</div>
-// 			</div>

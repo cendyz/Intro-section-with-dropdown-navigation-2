@@ -1,11 +1,11 @@
-import { Shadow, Nav } from './components'
+import { Shadow, Nav, Header } from './components'
 
 const App = () => {
-	
 	return (
 		<>
 			<Shadow />
 			<Nav />
+			<Header />
 		</>
 	)
 }
@@ -21,7 +21,6 @@ export default App
 
 //   Make remote work
 
-//   Get your team in sync, no matter your location. Streamline processes,
-//   create team rituals, and watch productivity soar.
+  
 
 //   Learn more
