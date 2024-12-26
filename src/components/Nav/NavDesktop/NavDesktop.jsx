@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { menuBtnsData, insideLinksData } from '../../../data'
 
 const NavDesktop = () => {
-	const { active, handleLinkBox, activeBox } = useGlobalContext()
+	const { handleLinkBox, activeBox } = useGlobalContext()
 	return (
 		<nav className={styles.nav}>
 			<div className={styles.leftPart}>
@@ -23,6 +23,12 @@ const NavDesktop = () => {
 										src={icon}
 										alt='Arrow icon'
 										className={styles.btnLinkIcon}
+										style={{
+											transform:
+												activeBox === id
+													? 'rotate(180deg)'
+													: 'rotate(0deg)',
+										}}
 									/>
 								)}
 							</button>
@@ -60,31 +66,10 @@ const NavDesktop = () => {
 						</div>
 					)
 				})}
-
-				{/* <div className={styles.btnBox}>
-					<button className={styles.btnLink}>
-						Features
-						<img
-							src='src/images/icon-arrow-down.svg'
-							alt='Arrow icon'
-							className={styles.btnLinkIcon}
-						/>
-					</button>
-					
-				</div> */}
-
-				{/* <div className={styles.insideLinkBox}>
-					<div className={styles.linkBox}>
-						<img
-							src='src/images/icon-reminders.svg'
-							alt='{linkOne}'
-							className={styles.btnLinkIcon}
-						/>
-						<a href='#' className={styles.link}>
-							Reminder
-						</a>
-					</div>
-				</div> */}
+			</div>
+			<div className={styles.rightPart}>
+				<button className={styles.loginBtn}>Login</button>
+				<button className={styles.registerBtn}>Register</button>
 			</div>
 		</nav>
 	)

@@ -13,13 +13,21 @@
 }
 
 .btnLink,
-.link {
+.link,
+.loginBtn,
+.registerBtn {
 	color: $a-gray;
 	font-weight: $weight-500;
 }
 
+.loginBtn,
+.registerBtn,
+.link,
 .btnLink {
 	font-size: 1.6rem;
+}
+
+.btnLink {
 	column-gap: 0.7em;
 }
 
@@ -39,8 +47,4 @@
 	flex-wrap: wrap;
 	max-width: 10.75em;
 	row-gap: 0.6em;
-}
-
-.link {
-	font-size: 1.6rem;
 }
