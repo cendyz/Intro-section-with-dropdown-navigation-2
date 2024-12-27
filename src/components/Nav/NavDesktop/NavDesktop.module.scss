@@ -43,7 +43,6 @@
 
 	.linksContainer {
 		top: 130%;
-		left: 0;
 		position: absolute;
 		background-color: $a-white;
 		border-radius: 1em;
@@ -53,6 +52,7 @@
 	}
 
 	.insideLinkBox {
+		padding: 1.3em 2em;
 		row-gap: 1em;
 		transition: opacity 0.2s;
 	}

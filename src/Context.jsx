@@ -23,8 +23,9 @@ const AppContext = ({ children }) => {
 	}
 
 	const handleClickOutside = e => {
-		if (!menuRef.current.contains(e.target)) {
+		if (menuRef.current && !menuRef.current.contains(e.target)) {
 			setActive(false)
+			setActiveBox(null)			
 		}
 	}
 

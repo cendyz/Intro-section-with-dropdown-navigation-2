@@ -1,13 +1,23 @@
-import styles from './NavDesktop.module.scss'
-import logo from '../../../images/logo.svg'
-import { useGlobalContext } from '../../../Context'
+import { useEffect } from 'react'
 import classNames from 'classnames'
+import logo from '../../../images/logo.svg'
+import styles from './NavDesktop.module.scss'
 import { menuBtnsData, insideLinksData } from '../../../data'
+import { useGlobalContext } from '../../../Context'
 
 const NavDesktop = () => {
-	const { handleLinkBox, activeBox } = useGlobalContext()
+	const { handleLinkBox, activeBox, menuRef, handleClickOutside } =
+		useGlobalContext()
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside)
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [])
+
 	return (
-		<nav className={styles.nav}>
+		<nav className={styles.nav} >
 			<div className={styles.leftPart}>
 				<img src={logo} alt='Logo snap' className={styles.logo} />
 				{menuBtnsData.map(({ btnText, icon, id }) => {
@@ -38,7 +48,11 @@ const NavDesktop = () => {
 										styles.linksContainer,
 										styles.insideLinkBox
 									)}
-									style={{ opacity: activeBox === id ? 1 : 0 }}>
+									style={{
+										left: id === 2 && '0',
+										right: id === 1 && '30%',
+									}}
+									ref={menuRef}>
 									{insideLinksData.map(
 										({ linkOne, linkTwo, icon, id }) => {
 											if (activeBox === 2 && id > 3) return null
