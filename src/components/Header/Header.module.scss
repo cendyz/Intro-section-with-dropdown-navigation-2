@@ -1,11 +1,11 @@
 @use '../../sass/colors.scss' as *;
 @use '../../sass/fonts.scss' as *;
+@use '../../sass/mixins.scss' as *;
 
 .headerImg {
 	display: block;
 	width: 100%;
 }
-
 
 .secondBox {
 	text-align: center;
@@ -47,5 +47,56 @@
 	}
 	&:nth-child(2) {
 		width: 80%;
+	}
+}
+
+@media (min-width: 992px) {
+	.header {
+		@include wrapper;
+		max-width: 75em;
+		display: grid;
+		grid-template-columns: auto auto;
+	}
+
+	.firstBox {
+		order: 1;
+	}
+
+	.headerImg {
+		padding-left: 10em;
+	}
+
+	.secondBox {
+		width: 100%;
+		max-width: 570px;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.title {
+		font-size: 8rem;
+	}
+
+	.desc {
+		padding-right: 7em;
+	}
+
+	.btn {
+		border: 2px solid $a-black;
+		margin-right: auto;
+		transition: color 0.2s, background-color 0.2s;
+
+		&:hover {
+			color: $a-black;
+			background-color: $a-white;
+		}
+	}
+
+	.logosContainer {
+		padding: 0 3em;
+		margin-top: auto;
+		column-gap: 2.5em;
 	}
 }

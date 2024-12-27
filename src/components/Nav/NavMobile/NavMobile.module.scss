@@ -3,16 +3,18 @@
 @use '../../../sass/shared.scss' as *;
 @use '../../../sass/fonts.scss' as *;
 
+
 .nav {
 	display: flex;
 	align-items: center;
-}
-
-.nav {
 	padding: 1.2em;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	height: 4.219em;
+}
+
+.navLogo {
+	user-select: none;
 }
 
 .btn {

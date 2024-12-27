@@ -1,5 +1,6 @@
 import styles from './Header.module.scss'
-import headerImg from '../../images/mobile/image-hero-mobile.png'
+import headerMobileImg from '../../images/mobile/image-hero-mobile.png'
+import headerDesktopImg from '../../images/desktop/image-hero-desktop.png'
 import databizIcon from '../../images/client-databiz.svg'
 import audiophileIcon from '../../images/client-audiophile.svg'
 import meetIcon from '../../images/client-meet.svg'
@@ -9,11 +10,14 @@ const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.firstBox}>
-				<img
-					src={headerImg}
-					alt='Some circles and guy working on laptop'
-					className={styles.headerImg}
-				/>
+				<picture>
+					<source srcSet={headerDesktopImg} media='(min-width: 992px)' />
+					<img
+						src={headerMobileImg}
+						alt='Some circles and guy working on laptop'
+						className={styles.headerImg}
+					/>
+				</picture>
 			</div>
 			<div className={styles.secondBox}>
 				<h1 className={styles.title}>Make remote work</h1>
