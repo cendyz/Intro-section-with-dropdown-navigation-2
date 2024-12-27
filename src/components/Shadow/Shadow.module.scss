@@ -5,11 +5,9 @@
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-	transition: opacity 0.2s;
-    will-change: opacity;
+	display: none;
 }
 
 .shadowActive {
-    opacity: 1;
+	display: block;
 }

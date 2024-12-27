@@ -56,7 +56,7 @@ const NavDesktop = () => {
 										left: id === 2 && '0',
 										right: id === 1 && '30%',
 									}}
-									ref={desktopRef}>
+									>
 									{insideLinksData.map(
 										({ linkOne, linkTwo, icon, id }) => {
 											if (activeBox === 2 && id > 3) return null
