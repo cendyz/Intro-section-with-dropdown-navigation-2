@@ -7,8 +7,8 @@ import { useGlobalContext } from '../../../Context'
 
 const NavDesktop = () => {
 	const {
-		handleLinkBox,
-		activeBox,
+		handleLinkBoxDesktop,
+		activeBoxDesktop,
 		desktopRef,
 		handleClickOutsideDesktop,
 	} = useGlobalContext()
@@ -22,14 +22,14 @@ const NavDesktop = () => {
 
 	return (
 		<nav className={styles.nav}>
-			<div className={styles.leftPart}>
+			<div className={styles.leftPart} ref={desktopRef}>
 				<img src={logo} alt='Logo snap' className={styles.logo} />
 				{menuBtnsData.map(({ btnText, icon, id }) => {
 					return (
 						<div className={styles.btnBox} key={id}>
 							<button
 								className={styles.btnLink}
-								onClick={() => handleLinkBox(id)}
+								onClick={() => handleLinkBoxDesktop(id)}
 								disabled={id > 2}>
 								{btnText}
 								{icon && (
@@ -39,14 +39,14 @@ const NavDesktop = () => {
 										className={styles.btnLinkIcon}
 										style={{
 											transform:
-												activeBox === id
+												activeBoxDesktop === id
 													? 'rotate(180deg)'
 													: 'rotate(0deg)',
 										}}
 									/>
 								)}
 							</button>
-							{activeBox === id && (
+							{activeBoxDesktop === id && (
 								<div
 									className={classNames(
 										styles.linksContainer,
@@ -55,14 +55,13 @@ const NavDesktop = () => {
 									style={{
 										left: id === 2 && '0',
 										right: id === 1 && '30%',
-									}}
-									>
+									}}>
 									{insideLinksData.map(
 										({ linkOne, linkTwo, icon, id }) => {
-											if (activeBox === 2 && id > 3) return null
+											if (activeBoxDesktop === 2 && id > 3) return null
 											return (
 												<div className={styles.linkBox} key={id}>
-													{activeBox === 1 && (
+													{activeBoxDesktop === 1 && (
 														<img
 															src={icon}
 															alt='Arrow icon'
@@ -72,8 +71,11 @@ const NavDesktop = () => {
 															)}
 														/>
 													)}
-													<a href='#' className={styles.link}>
-														{activeBox === 2 ? linkTwo : linkOne}
+													<a
+														href='#'
+														className={styles.link}
+														onClick={() => handleLinkBoxDesktop(null)}>
+														{activeBoxDesktop === 2 ? linkTwo : linkOne}
 													</a>
 												</div>
 											)

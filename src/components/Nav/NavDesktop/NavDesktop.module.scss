@@ -28,7 +28,7 @@
 	.btnLink {
 		display: grid;
 		grid-template-columns: auto auto;
-		padding-right: 3em;
+		margin-right: 3em;
 		transition: color 0.2s;
 
 		&:hover,

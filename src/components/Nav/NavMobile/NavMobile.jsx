@@ -12,15 +12,15 @@ const NavMobile = () => {
 		active,
 		activeBox,
 		menuRef,
-		handleLinkBox,
+		handleLinkBoxMobile,
 		handleActive,
-		handleClickOutsideMobile,
+		handleClickOutside,
 	} = useGlobalContext()
 
 	useEffect(() => {
-		document.addEventListener('mousedown', handleClickOutsideMobile)
+		document.addEventListener('mousedown', handleClickOutside)
 		return () => {
-			document.removeEventListener('mousedown', handleClickOutsideMobile)
+			document.removeEventListener('mousedown', handleClickOutside)
 		}
 	}, [])
 
@@ -48,7 +48,7 @@ const NavMobile = () => {
 								style={{
 									paddingBottom: `${activeBox === id ? '0' : '1.5'}em`,
 								}}
-								onClick={() => handleLinkBox(id)}
+								onClick={() => handleLinkBoxMobile(id)}
 								disabled={id > 2}>
 								{btnText}{' '}
 								{icon && (
