@@ -53,6 +53,7 @@
 @media (min-width: 992px) {
 	.header {
 		@include wrapper;
+		margin-top: 2.5em;
 		max-width: 75em;
 		display: grid;
 		grid-template-columns: auto auto;
@@ -63,7 +64,11 @@
 	}
 
 	.headerImg {
-		padding-left: 10em;
+		padding-left: clamp(
+			1em,
+			calc(1em + ((160 - 16) * ((100vw - 992px) / (1440 - 992)))),
+			10em
+		);
 	}
 
 	.secondBox {

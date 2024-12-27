@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useGlobalContext } from '../../../Context'
 import { menuBtnsData, insideLinksData } from '../../../data'
 import React from 'react'
@@ -14,13 +14,13 @@ const NavMobile = () => {
 		menuRef,
 		handleLinkBox,
 		handleActive,
-		handleClickOutside,
+		handleClickOutsideMobile,
 	} = useGlobalContext()
 
 	useEffect(() => {
-		document.addEventListener('mousedown', handleClickOutside)
+		document.addEventListener('mousedown', handleClickOutsideMobile)
 		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
+			document.removeEventListener('mousedown', handleClickOutsideMobile)
 		}
 	}, [])
 

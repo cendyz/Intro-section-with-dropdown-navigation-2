@@ -6,18 +6,22 @@ import { menuBtnsData, insideLinksData } from '../../../data'
 import { useGlobalContext } from '../../../Context'
 
 const NavDesktop = () => {
-	const { handleLinkBox, activeBox, menuRef, handleClickOutside } =
-		useGlobalContext()
+	const {
+		handleLinkBox,
+		activeBox,
+		desktopRef,
+		handleClickOutsideDesktop,
+	} = useGlobalContext()
 
 	useEffect(() => {
-		document.addEventListener('mousedown', handleClickOutside)
+		document.addEventListener('mousedown', handleClickOutsideDesktop)
 		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
+			document.removeEventListener('mousedown', handleClickOutsideDesktop)
 		}
 	}, [])
 
 	return (
-		<nav className={styles.nav} >
+		<nav className={styles.nav}>
 			<div className={styles.leftPart}>
 				<img src={logo} alt='Logo snap' className={styles.logo} />
 				{menuBtnsData.map(({ btnText, icon, id }) => {
@@ -52,7 +56,7 @@ const NavDesktop = () => {
 										left: id === 2 && '0',
 										right: id === 1 && '30%',
 									}}
-									ref={menuRef}>
+									ref={desktopRef}>
 									{insideLinksData.map(
 										({ linkOne, linkTwo, icon, id }) => {
 											if (activeBox === 2 && id > 3) return null

@@ -12,6 +12,7 @@ const AppContext = ({ children }) => {
 	const [active, setActive] = useState(false)
 	const [activeBox, setActiveBox] = useState(null)
 	const menuRef = useRef(null)
+	const desktopRef = useRef(null)
 
 	const handleLinkBox = id => {
 		setActiveBox(prevItem => (prevItem === id ? null : id))
@@ -22,10 +23,14 @@ const AppContext = ({ children }) => {
 		setActiveBox(null)
 	}
 
-	const handleClickOutside = e => {
+	const handleClickOutsideMobile = e => {
 		if (menuRef.current && !menuRef.current.contains(e.target)) {
 			setActive(false)
-			setActiveBox(null)			
+		}
+	}
+	const handleClickOutsideDesktop = e => {
+		if (desktopRef.current && !desktopRef.current.contains(e.target)) {
+			setActiveBox(null)
 		}
 	}
 
@@ -36,7 +41,9 @@ const AppContext = ({ children }) => {
 				setActive,
 				handleLinkBox,
 				handleActive,
-				handleClickOutside,
+				handleClickOutsideMobile,
+				handleClickOutsideDesktop,
+				desktopRef,
 				menuRef,
 				activeBox,
 			}}>
